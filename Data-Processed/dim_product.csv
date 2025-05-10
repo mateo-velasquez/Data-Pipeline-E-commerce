@@ -1,0 +1,43 @@
+Product_Name,Category_ID,Product_ID
+Car Media Players,0,0
+Car Speakers,0,1
+Car Body Covers,0,2
+Car & Bike Care,0,3
+Tyre,0,4
+Bike Tyres,0,5
+Car Mat,0,6
+Car Seat Covers,0,7
+Car Pillow & Neck Rest,0,8
+Shirts,1,9
+Jeans,1,10
+Suits,1,11
+Sports Wear,1,12
+Casula Shoes,1,13
+Running Shoes,1,14
+Formal Shoes,1,15
+Sneakers,1,16
+Titak watch,1,17
+Fossil Watch,1,18
+T - Shirts,1,19
+Samsung Mobile,2,20
+Watch,2,21
+Fans,2,22
+Iron,2,23
+Tablet,2,24
+Mouse,2,25
+Keyboard,2,26
+Apple Laptop,2,27
+Mixer/Juicer,2,28
+LED,2,29
+LCD,2,30
+Speakers,2,31
+Sofa Covers,3,32
+Bed Sheets,3,33
+Curtains,3,34
+Towels,3,35
+Sofas,3,36
+Beds,3,37
+Dinning Tables,3,38
+Shoe Rack,3,39
+Umbrellas,3,40
+Dinner Crockery,3,41

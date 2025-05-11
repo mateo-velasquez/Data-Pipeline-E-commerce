@@ -25,9 +25,9 @@ def crearFileOrders(cantidadOrders, anio, cantidaPerfiles):
     return f"Archivo generado: {nombre_archivo}"
 
 #print(crearFileCustomers(70000))
-#print(crearFileOrders(60000,2019,20000))
-#print(crearFileOrders(100500,2020,40000))
-#print(crearFileOrders(121500,2021,51000))
-#print(crearFileOrders(129700,2022,51000))
-#print(crearFileOrders(138100,2023,62000))
-#print(crearFileOrders(153400,2024,70000))
+#print(crearFileOrders(20000,2019,20000))
+print(crearFileOrders(30500,2020,40000))
+print(crearFileOrders(31500,2021,51000))
+print(crearFileOrders(39700,2022,51000))
+print(crearFileOrders(38100,2023,62000))
+print(crearFileOrders(33400,2024,70000))

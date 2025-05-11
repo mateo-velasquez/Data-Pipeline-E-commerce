@@ -48,7 +48,36 @@ def createOrders(cantidadOrders, anio, cantidadPerfiles):
     df_fact = pd.read_csv('../Data-Processed/fact_table.csv')
 
     # Extraer combinaciones únicas de Product_ID y Sales
-    product_sales_combos = df_fact[['Product_ID', 'Sales','Quantity', 'Discount', 'Profit', 'Shipping_Cost']].drop_duplicates().values.tolist()
+#    product_sales_combos = df_fact[['Product_ID', 'Sales','Quantity', 'Discount', 'Profit', 'Shipping_Cost']].drop_duplicates().values.tolist()
+#
+#    data = []
+    # Leer archivo existente
+    df_fact = pd.read_csv('../Data-Processed/fact_table.csv')
+
+    # Extraer combinaciones únicas con frecuencia
+    combo_counts = df_fact.groupby(
+        ['Product_ID', 'Sales', 'Quantity', 'Discount', 'Profit', 'Shipping_Cost']
+    ).size().reset_index(name='count')
+
+    # Ordenar por frecuencia
+    combo_counts = combo_counts.sort_values(by='count', ascending=False).reset_index(drop=True)
+
+    # Asignamos los pesos:
+    top3 = combo_counts.iloc[:3].copy()
+    next7 = combo_counts.iloc[3:10].copy()
+    rest = combo_counts.iloc[10:].copy()
+
+    # Distribuir los pesos proporcionalmente
+    top3['peso'] = 0.5 / len(top3)
+    next7['peso'] = 0.3 / len(next7)
+    if len(rest) > 0:
+        rest['peso'] = 0.2 / len(rest)
+        combo_counts = pd.concat([top3, next7, rest], ignore_index=True)
+    else:
+        combo_counts = pd.concat([top3, next7], ignore_index=True)
+
+    product_sales_combos = combo_counts.drop(columns=['count', 'peso']).values.tolist()
+    weights = combo_counts['peso'].tolist()
 
     data = []
 
@@ -56,9 +85,8 @@ def createOrders(cantidadOrders, anio, cantidadPerfiles):
         order_date = pd.to_datetime(f"{anio}-{random.randint(1, 12)}-{random.randint(1, 28)}")
         order_time = f"{random.randint(0, 23):02}:{random.randint(0, 59):02}:{random.randint(0, 59):02}"
 
-        # Cargamos los combos de Sales y product_id:
         # Elegimos una combinación aleatoria válida de producto y precio
-        combo = random.choice(product_sales_combos)
+        combo = random.choices(product_sales_combos, weights=weights, k=1)[0]
         product_id = int(combo[0])  # fuerza a entero
         sales = combo[1]
         quantity = combo[2]

@@ -2,7 +2,7 @@ ___
 # <font color= #003366> **Data-Pipeline-E-commerce** </font>
 ___
 
-# <font color= #003366> **Expñicación de ejecución del código** </font>
+# <font color= #003366> **Explicación de ejecución del código** </font>
 
 Este repositorio contiene la información del DataPipeline trabajado en la materia de Proyecto de Ingeniería de Datos en el Instituto Tecnológico de Estudios Superiores de Occidente (ITESO). En el periodo de Primavera 2025
 
